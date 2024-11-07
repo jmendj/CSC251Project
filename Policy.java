@@ -11,6 +11,9 @@ public class Policy {
     private String providerName;
     private PolicyHolder policyHolder;
 
+    // Static field to keep track of the number of Policy objects created
+    private static int policyCount = 0;
+
     // No-arg constructor (default values)
     /**
      * No-arg constructor that initializes all fields to default values.
@@ -19,6 +22,7 @@ public class Policy {
         this.policyNumber = "";
         this.providerName = "";
         this.policyHolder = new PolicyHolder();
+        policyCount++;
     }
 
     // Constructor that accepts arguments
@@ -33,6 +37,7 @@ public class Policy {
         this.policyNumber = policyNumber;
         this.providerName = providerName;
         this.policyHolder = policyHolder;
+        policyCount++;
     }
 
     // Getters and setters (accessors and mutators)
@@ -175,8 +180,16 @@ public class Policy {
         System.out.printf("BMI: %.2f\n", policyHolder.calculateBMI());
         System.out.printf("Insurance Price: $%.2f\n", policy.calculateInsurancePrice());
 
+        // Display the number of Policy objects created
+        System.out.println("Number of Policy objects created: " + Policy.getPolicyCount());
+
         // Close the scanner
         scanner.close();
+    }
+
+    // Static method to get the policy count
+    public static int getPolicyCount() {
+        return policyCount;
     }
 
     // toString method
