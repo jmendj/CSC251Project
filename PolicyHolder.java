@@ -83,4 +83,17 @@ public class PolicyHolder {
         }
         return (weight * 703) / (height * height);
     }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "PolicyHolder{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", smokingStatus='" + smokingStatus + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                '}';
+    }
 }
