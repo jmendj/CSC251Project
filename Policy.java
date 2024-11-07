@@ -133,6 +133,10 @@ public class Policy {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        // Counters for smokers and non-smokers
+        int smokerCount = 0;
+        int nonSmokerCount = 0;
+
         // Get input from the user
         System.out.print("Enter the Policy Number: ");
         String policyNumber = scanner.nextLine();
@@ -166,15 +170,16 @@ public class Policy {
         // Create a Policy object using user input
         Policy policy = new Policy(policyNumber, providerName, policyHolder);
 
-        // Display policy details
+        // Update smoker/non-smoker count
+        if (policyHolder.getSmokingStatus().equalsIgnoreCase("smoker")) {
+            smokerCount++;
+        } else {
+            nonSmokerCount++;
+        }
+
+        // Display policy details using toString method
         System.out.println("\nPolicy Details:");
-        System.out.println("Policy Number: " + policy.getPolicyNumber());
-        System.out.println("Provider Name: " + policy.getProviderName());
-        System.out.println("Policyholder Name: " + policyHolder.getFirstName() + " " + policyHolder.getLastName());
-        System.out.println("Age: " + policyHolder.getAge());
-        System.out.println("Smoking Status: " + policyHolder.getSmokingStatus());
-        System.out.println("Height: " + policyHolder.getHeight() + " inches");
-        System.out.println("Weight: " + policyHolder.getWeight() + " pounds");
+        System.out.println(policy);
 
         // Display BMI and Insurance Price
         System.out.printf("BMI: %.2f\n", policyHolder.calculateBMI());
@@ -182,6 +187,10 @@ public class Policy {
 
         // Display the number of Policy objects created
         System.out.println("Number of Policy objects created: " + Policy.getPolicyCount());
+
+        // Display the number of smokers and non-smokers
+        System.out.println("Number of Policyholders that are smokers: " + smokerCount);
+        System.out.println("Number of Policyholders that are non-smokers: " + nonSmokerCount);
 
         // Close the scanner
         scanner.close();
