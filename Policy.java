@@ -178,4 +178,14 @@ public class Policy {
         // Close the scanner
         scanner.close();
     }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Policy{" +
+                "policyNumber='" + policyNumber + '\'' +
+                ", providerName='" + providerName + '\'' +
+                ", policyHolder=" + policyHolder +
+                '}';
+    }
 }
